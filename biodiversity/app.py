@@ -34,13 +34,14 @@ Samples = Base.classes.samples
 @app.route("/")
 def index():
     """Return the homepage."""
+    print("Home Page")
     return render_template("index.html")
 
 
 @app.route("/names")
 def names():
     """Return a list of sample names."""
-
+    print("Names")
     # Use Pandas to perform the sql query
     stmt = db.session.query(Samples).statement
     df = pd.read_sql_query(stmt, db.session.bind)
@@ -52,6 +53,7 @@ def names():
 @app.route("/metadata/<sample>")
 def sample_metadata(sample):
     """Return the MetaData for a given sample."""
+    print("Metadata")
     sel = [
         Samples_Metadata.sample,
         Samples_Metadata.ETHNICITY,
@@ -75,7 +77,7 @@ def sample_metadata(sample):
         sample_metadata["BBTYPE"] = result[5]
         sample_metadata["WFREQ"] = result[6]
 
-    print(sample_metadata)
+    print("in Route Metadata sample",sample_metadata)
     return jsonify(sample_metadata)
 
 
@@ -83,11 +85,13 @@ def sample_metadata(sample):
 def samples(sample):
     """Return `otu_ids`, `otu_labels`,and `sample_values`."""
     stmt = db.session.query(Samples).statement
-    df = pd.read_sql_query(stmt, db.session.bind)
-
+    df1 = pd.read_sql_query(stmt, db.session.bind)
+    # sort descending order
+    df=df1.sort_values("sample", ascending = false)
     # Filter the data based on the sample number and
     # only keep rows with values above 1
     sample_data = df.loc[df[sample] > 1, ["otu_id", "otu_label", sample]]
+    
     # Format the data to send as json
     data = {
         "otu_ids": sample_data.otu_id.values.tolist(),
