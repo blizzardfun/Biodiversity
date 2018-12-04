@@ -13,7 +13,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-
 #################################################
 # Database Setup
 #################################################
@@ -85,9 +84,9 @@ def sample_metadata(sample):
 def samples(sample):
     """Return `otu_ids`, `otu_labels`,and `sample_values`."""
     stmt = db.session.query(Samples).statement
-    df1 = pd.read_sql_query(stmt, db.session.bind)
+    df = pd.read_sql_query(stmt, db.session.bind)
     # sort descending order
-    df=df1.sort_values("sample", ascending = false)
+    # df=df.sort_values("sample", ascending = False)
     # Filter the data based on the sample number and
     # only keep rows with values above 1
     sample_data = df.loc[df[sample] > 1, ["otu_id", "otu_label", sample]]

@@ -1,5 +1,5 @@
 function buildMetadata(sample) {
-  console.log("buildMetadata", sample);
+  //console.log("buildMetadata", sample);
     // build the metadata panel
     // select the panel with id of `#sample-metadata`
   metaData=d3.select("#sample-metadata");
@@ -34,73 +34,10 @@ function buildMetadata(sample) {
   
 
 }
-//****************************************************** */
-function buildGauge(freq) {
 
-  // Enter a speed between 0 and 180
-var level = freq * 20 ;
-
-// Trig to calc meter point
-var degrees = 180 - level,
-     radius = .5;
-var radians = degrees * Math.PI / 180;
-var x = radius * Math.cos(radians);
-var y = radius * Math.sin(radians);
-
-// Path: may have to change to create a better triangle
-var mainPath = 'M -.0 -0.025 L .0 0.025 L ',
-     pathX = String(x),
-     space = ' ',
-     pathY = String(y),
-     pathEnd = ' Z';
-var path = mainPath.concat(pathX,space,pathY,pathEnd);
-
-var data = [{ type: 'scatter',
-   x: [0], y:[0],
-    marker: {size: 28, color:'850000'},
-    showlegend: false,
-    name: 'Scrubs per Week',
-   // text: level,
-    hoverinfo: 'text+name'},
-    // slices of a pie chart
-  { values: [50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50 ],
-  rotation: 90,
-  text: ['8-9','7-8','6-7','5-6','4-5','3-4','2-3','1-2','0-1',''],
-  textinfo: 'text',
-  textposition:'inside',
-  marker: {colors:['#FF00BF', '#FF1EE5','#F335FF', 
-                    '#CE45FF','#A54BFF', '#7745FF',
-                    '#4135FF','#1E37FF','#0040FF','white']},
-  labels: ['8-9','7-8','6-7','5-6','4-5','3-4','2-3','1-2','0-1',''],
-  hoverinfo: 'label',
-  hole: .5,
-  type: 'pie',
-  showlegend: false
-}];
-
-var layout = {
-  shapes:[{
-      type: 'path',
-      path: path,
-      fillcolor: '850000',
-      line: {
-        color: '850000'
-      }
-    }],
-  title: 'Belly Button Washing Frequency',
-  height: 400,
-  width: 400,
-  xaxis: {zeroline:false, showticklabels:false,
-             showgrid: false, range: [-1, 1]},
-  yaxis: {zeroline:false, showticklabels:false,
-             showgrid: false, range: [-1, 1]}
-};
-
-Plotly.newPlot('gauge', data, layout);
-}
 //************************************************************************
 function buildCharts(sample) {
-  console.log("buildCharts",sample);
+  //console.log("buildCharts",sample);
 
   // select the div with id "pie"
   var pieDiv= d3.select("#pie");
@@ -115,7 +52,7 @@ function buildCharts(sample) {
   d3.json(`/samples/${sample}`).then(function(result){
 
        //build the pie chart
-    console.log(result);
+    //console.log(result);
   var pieTrace ={
       labels :result.otu_ids.slice(0,10),
       values :result.sample_values.slice(0,10),
@@ -130,7 +67,7 @@ function buildCharts(sample) {
       width: 400,
      };
 
-  console.log(pieTrace);
+  //console.log(pieTrace);
   var pieData = [pieTrace];
   Plotly.newPlot("pie",pieData,pieLayout);
 
@@ -143,18 +80,19 @@ function buildCharts(sample) {
       color: result.otu_ids,
       opacity:0.8,
       size: result.sample_values,
-      hovertext:result.otu_labels,
+      text:result.otu_labels,
       hoverinfo:"text",
+      textinfo:"text"
       }
     };
 
   var bubbleLayout = {
       title: 'Sample Values',
       height: 500,
-      width: 1100,
+      width: 1200,
      };
 
-  console.log(bubbleTrace);
+  //console.log(bubbleTrace);
   var bubbleData=[bubbleTrace];
   Plotly.newPlot("bubble",bubbleData,bubbleLayout)
   })
@@ -165,7 +103,7 @@ function buildCharts(sample) {
 function init() {
   // Grab a reference to the dropdown select element
   var selector = d3.select("#selDataset");
-  console.log("init");
+  //console.log("init");
   // Use the list of sample names to populate the select options
   d3.json("/names").then((sampleNames) => {
     sampleNames.forEach((sample) => {
