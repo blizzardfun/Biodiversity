@@ -1,7 +1,7 @@
 //****************************************************** */
 function buildGauge(freq) {
 // this gauge is really a donut pie chart 
-//where the lower half of the chart does not show
+//where the lower half of the chart is white
     //level must be between 0 and 180
     // freq is between 0 and 9
   var level = freq * 20 ;
@@ -44,6 +44,7 @@ function buildGauge(freq) {
                       '#6161b5','#4747ad', '#3131aa',
                       '#1818a5','#05058e','white']},
     labels: ['8-9','7-8','6-7','5-6','4-5','3-4','2-3','1-2','0-1',''],
+    // last label is empty so it doesn't show under the chart
     hoverinfo: 'text',
     hole: .5,
     type: 'pie',
@@ -59,7 +60,7 @@ function buildGauge(freq) {
           color: '850000'
         }
       }],
-    
+    // HTML in string passes through and allows for subtitle
     title: `<b>Belly Button Washing Frequency</b> <br> Scrubs per Week`,
     height:500,
     width: 500,

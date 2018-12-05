@@ -1,2 +1,3 @@
 # Biodiversity
 Unit 15 Belly button biodiversity dashboard assignment
+ The belly button data can be examined from a table and three charts.The front end is built from HTML, Javascript,and D3. The table displays all meta data about the participant. A D3 pie chart, bubble chart and washing frequency gauge display data for the selected sample number. The Python / Flask back end with HTML and Javascript code starters were provided for this assignment.

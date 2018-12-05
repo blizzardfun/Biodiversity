@@ -1,6 +1,7 @@
 function buildMetadata(sample) {
   //console.log("buildMetadata", sample);
-    // build the metadata panel
+    // build the metadata panel 
+    // also calls buildsGauge since WFREQ is available from metadata
     // select the panel with id of `#sample-metadata`
   metaData=d3.select("#sample-metadata");
       //  to clear any existing metadata
@@ -9,6 +10,7 @@ function buildMetadata(sample) {
 
  //  fetch the metadata for a sample
     // add each key and value pair to the panel
+    // change format of some keys for display
   d3.json(`/metadata/${sample}`).then(function(result){
     Object.entries(result).forEach(([key,value]) => {
           switch(key) {
@@ -32,12 +34,13 @@ function buildMetadata(sample) {
     buildGauge(result.WFREQ);
     });
   
-
 }
-
 //************************************************************************
 function buildCharts(sample) {
   //console.log("buildCharts",sample);
+  // builds pie chart and bubble chart 
+  // data retrieved from /samples route which comes from 
+  // samples table
 
   // select the div with id "pie"
   var pieDiv= d3.select("#pie");
@@ -107,6 +110,7 @@ function buildCharts(sample) {
 
 //************************************************************************
 function init() {
+  // initializes the metadata
   // Grab a reference to the dropdown select element
   var selector = d3.select("#selDataset");
   //console.log("init");
