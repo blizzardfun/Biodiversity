@@ -51,7 +51,7 @@ function buildCharts(sample) {
   // fetch the sample data
   d3.json(`/samples/${sample}`).then(function(result){
 
-       //build the pie chart
+       //build the pie chart---------------------
     //console.log(result);
   var pieTrace ={
       labels :result.otu_ids.slice(0,10),
@@ -59,6 +59,11 @@ function buildCharts(sample) {
       type :'pie',
       hovertext:result.otu_labels.slice(0,10),
       hoverinfo:"text",
+      marker: {
+        colors:['#cc615d','#ccb45d', '#9ccc5d','#5dcc8b', 
+        '#5dccc2','#5d94cc', '#795dcc',
+        '#b05dcc','#cc5d98','#ed7874'],
+      },
     };
 
   var pieLayout = {
@@ -71,7 +76,7 @@ function buildCharts(sample) {
   var pieData = [pieTrace];
   Plotly.newPlot("pie",pieData,pieLayout);
 
-  //build the bubble chart
+  //build the bubble chart-------------------------
   var bubbleTrace= {
     x:result.otu_ids,
     y:result.sample_values,
@@ -80,10 +85,11 @@ function buildCharts(sample) {
       color: result.otu_ids,
       opacity:0.8,
       size: result.sample_values,
-      text:result.otu_labels,
-      hoverinfo:"text",
-      textinfo:"text"
-      }
+      },
+    text:result.otu_labels,
+    hoverinfo:"text",
+    textinfo:"text" 
+
     };
 
   var bubbleLayout = {

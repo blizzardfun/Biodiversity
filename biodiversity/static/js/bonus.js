@@ -25,23 +25,26 @@ function buildGauge(freq) {
      x: [0], y:[0],
       marker: {size: 28, color:'850000'},
       showlegend: false,
-      name: 'Scrubs per Week',
-     // text: level,
-      hoverinfo: 'name'},
+      // name: 'Scrubs per Week',
+      text: 'Scrubs per Week',
+      textinfo:'text',
+      textposition:'inside',
+      hoverinfo: 'text'
+      },
       // slices of a donut pie chart are percentages
     //  the last slice is the lower half of the donut
     { values: [50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50/9, 50 ],
     rotation: 90,
-    name: 'Scrubs per Week',
+    // name: 'Scrubs per Week',
     text: ['8-9','7-8','6-7','5-6','4-5','3-4','2-3','1-2','0-1',''],
     textinfo: 'text',
     textposition:'inside',
     //colors for slices lower half is white
-    marker: {colors:['#FF00BF', '#FF1EE5','#F335FF', 
-                      '#CE45FF','#A54BFF', '#7745FF',
-                      '#4135FF','#1E37FF','#0040FF','white']},
+    marker: {colors:['#c9c9c9','#bdbdc9', '#9b9bc1','#7878ba', 
+                      '#6161b5','#4747ad', '#3131aa',
+                      '#1818a5','#05058e','white']},
     labels: ['8-9','7-8','6-7','5-6','4-5','3-4','2-3','1-2','0-1',''],
-    hoverinfo: 'name',
+    hoverinfo: 'text',
     hole: .5,
     type: 'pie',
     showlegend: false
@@ -56,7 +59,8 @@ function buildGauge(freq) {
           color: '850000'
         }
       }],
-    title: 'Belly Button Washing Frequency',
+    
+    title: `<b>Belly Button Washing Frequency</b> <br> Scrubs per Week`,
     height:500,
     width: 500,
     xaxis: {zeroline:false, showticklabels:false,
