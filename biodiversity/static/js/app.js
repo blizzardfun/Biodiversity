@@ -96,7 +96,7 @@ function buildCharts(sample) {
     };
 
   var bubbleLayout = {
-      // title: 'None',
+      title: sample,
       height: 500,
       width: 1200,
      };
