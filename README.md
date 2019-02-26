@@ -8,7 +8,7 @@
  
  `/samples/<sample>` returns the data for the given sample number.
 
- `/wfreq/<sample>` returns the value for washing frequency for the guage chart
+ `/wfreq/<sample>` returns the value for washing frequency for the gauge chart
  
  The front end is built from HTML, Javascript, and Plotly with D3. The table displays all the meta data about the participant. A Plotly pie chart, bubble chart and washing frequency gauge display data for the selected sample number. 
 
