@@ -70,7 +70,7 @@ function buildCharts(sample) {
     };
 
   var pieLayout = {
-      title: 'Bacteria Sample Values',
+      title: 'Portion for Each Bacteria in Sample',
       height: 400,
       width: 400,
      };
@@ -96,7 +96,7 @@ function buildCharts(sample) {
     };
 
   var bubbleLayout = {
-      // title: "Sample ${sample}",
+      title: "Size and Y-value both indicate quantity of bacteria in sample",
       height: 500,
       width: 1200,
      };
