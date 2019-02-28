@@ -14,11 +14,12 @@
  `/wfreq/<sample>` returns the value for washing frequency for the gauge chart
  
  The front end is built from HTML, Javascript, and D3 with Plotly. The table displays all the meta data about the participant. A Plotly pie chart shows the bacteria found in the sample and their proportion. The bubble chart has a bubble for each bacteria found with its size indicating the quantity of the bacteria found. The washing frequency gauge indicates participants washing habits. All are displaying data for the selected sample number. 
-
+ 
+ It is deployed on Heroku at https://biodiversity-belly-buttons.herokuapp.com/
 
 ![dashboard.png](biodiversity/static/dashboard.png)
 
 
- It is also deployed on Heroku at https://biodiversity-belly-buttons.herokuapp.com/
+
 
  * Note: To run the visualization after downloading you'll need to use `sh run.sh` initiated from command line.  Requirements are noted in requirements.txt. This will host the page at ` http://127.0.0.1:5000/` in your web browser. 
