@@ -5,7 +5,7 @@
  
  The belly button data is stored in sqlite database files with a Flask API server providing JSON files at the following endpoints. 
  
- `/names` provides the list of sampe names.  
+ `/names` provides the list of sample names.  
  
  `/metadata/<sample>` provides the metadata about a particular sample. 
  
